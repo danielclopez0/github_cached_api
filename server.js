@@ -23,6 +23,7 @@ var cache = (duration) => {
     }
   }
 }
+
 app.use(cors())
 
 app.get('/', cache(10), (req, res) => {
@@ -37,11 +38,6 @@ app.get('/repo/:searchString/:sort', cache(10), (req, res) => {
     .then(response => response.json())
     .then(data => res.json(data))
 })
-// app.use((req, res) => {
-//   res.header("Access-Control-Allow-Origin", "*");
-//   res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
-//   res.status(404).send('') //not found
-// })
 
 app.listen(3001, function () {
   console.log(`Listening on port 3001!`)
